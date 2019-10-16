@@ -3,7 +3,12 @@ const app = new Vue({
   data() {
     return {
       inputText: '',
-      lists: []
+      lists: [
+        {
+          name: 'ネギを買う',
+          isDone: false
+        }
+      ]
     };
   },
   methods: {
