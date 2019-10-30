@@ -3,6 +3,8 @@ const app = new Vue({
   data() {
     return {
       inputText: '',
+      searchText: '',
+      isShowDoneTodos: false,
       lists: [
         {
           name: 'ネギを買う',
@@ -10,6 +12,23 @@ const app = new Vue({
         }
       ]
     };
+  },
+  computed: {
+    filterToDosBySearchText () {
+      return this.lists.filter((todo) => {
+        return todo.name.indexOf(this.searchText) !== -1;
+      });
+    },
+    isNotDoneToDos () {
+      return this.lists.filter((todo) => {
+        return !todo.isDone;
+      });
+    },
+    isDoneToDos () {
+      return this.lists.filter((todo) => {
+        return todo.isDone;
+      });
+    }
   },
   methods: {
     onAdd () {
